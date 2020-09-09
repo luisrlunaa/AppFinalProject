@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Text;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -35,6 +36,42 @@ namespace Proyectofinal
             //TODO: Implementar el codigo para descargar la lista de fotos de un album
             // Usar la constante URL declarada al inicio de la clase y reemplazar {0}
             // Por la variable albumId
+            base.OnAppearing();
+
+            IsBusy = true;
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(AlbumId), Encoding.UTF8, "application/json");
+            var response = await this.httpClient.PostAsync(URL, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                try
+                {
+                    var fotoResponse = JsonConvert.DeserializeObject<List<Photo>>(jsonResponse);
+
+                    if (fotoResponse.Count > 0)
+                    {
+                        Photos.Clear();
+                        foreach (var fotos in fotoResponse)
+                        {
+                            Photos.Add(fotos);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    await DisplayAlert("Error", "No se pudo descargar la lista de fotos", "Ok");
+                }
+
+            }
+            else
+            {
+                await DisplayAlert("Error", "No se pudo descargar la lista de fotos", "Ok");
+            }
+
+            IsBusy = false;
+
         }
     }
 }

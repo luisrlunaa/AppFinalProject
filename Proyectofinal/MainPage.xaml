@@ -24,14 +24,14 @@
         </OnPlatform>
     </ContentPage.Padding>
 
-    <StackLayout>
-        <ActivityIndicator IsRunning="{Binding IsBusy}" />
+    <StackLayout><ActivityIndicator IsRunning="{Binding IsBusy}" />
 
         <!--TODO: Hacer binding a la propiedad Albums-->
         <ListView HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
-                  
-                  SelectedItem="{Binding SelectedAlbum}">
+                  ItemsSource="{Binding Albums}"
+                  SelectedItem="{Binding SelectedAlbum}"
+                  ItemSelected="ListView_ItemSelected" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}" TextColor="Black"/>

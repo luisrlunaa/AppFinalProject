@@ -45,18 +45,18 @@ namespace Proyectofinal
             InitializeComponent();
 
             Albums = new ObservableCollection<Album>();
+            BindingContext = this;
             //TODO: Asignar el BindingContext a la misma instancia de MainPage
         }
 
-        private async void SelectAlbum(Album selectedAlbum)
+        private async Task SelectAlbum(Album selectedAlbum)
         {
             if (selectedAlbum == null)
             {
                 return;
             }
-
             //TODO: Navegar hacia la pagina AlbumDetailPage y pasar el album seleccionado
-
+            await Navigation.PushAsync(new AlbumDetailPage(selectedAlbum.AlbumId));
             selectedAlbum = null;
         }
 
@@ -85,7 +85,7 @@ namespace Proyectofinal
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await DisplayAlert("Error", "No se pudo descargar la lista de albums", "Ok");
                 }
@@ -97,6 +97,17 @@ namespace Proyectofinal
             }
 
             IsBusy = false;
+        }
+
+        async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var albumSeleccionada = e.SelectedItem as Album;
+            if (albumSeleccionada == null)
+            {
+                return;
+            }
+
+            await SelectAlbum(albumSeleccionada);
         }
     }
 }

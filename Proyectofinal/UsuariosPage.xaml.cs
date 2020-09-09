@@ -24,6 +24,7 @@ namespace Proyectofinal
             InitializeComponent();
 
             Users = new ObservableCollection<User>();
+            BindingContext = this;
             // TODO: Agregar el BindingContext de la instancia de esta pagina.
         }
 
@@ -52,7 +53,7 @@ namespace Proyectofinal
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await DisplayAlert("Error", "No se pudo descargar la lista de usuarios", "Ok");
                 }

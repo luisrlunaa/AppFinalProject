@@ -2,7 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Proyectofinal.AlbumDetailPage">
+    x:Class="Proyectofinal.AlbumDetailPage"
+     Title="Detalles de Album de Fotos">
      <ContentPage.Padding>
         <OnPlatform
             x:TypeArguments="Thickness">
@@ -20,8 +21,7 @@
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout>
-            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+        <StackLayout> <ActivityIndicator IsRunning="{Binding IsBusy}" />
             <CollectionView
                 ItemsSource="{Binding Photos}">
                 <CollectionView.ItemsLayout>

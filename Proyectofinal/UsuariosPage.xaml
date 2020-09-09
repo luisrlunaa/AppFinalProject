@@ -2,7 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Proyectofinal.UsuariosPage">
+    x:Class="Proyectofinal.UsuariosPage"
+    Title="Listado de Usuarios">
     <ContentPage.Padding>
         <OnPlatform
             x:TypeArguments="Thickness">
@@ -28,6 +29,16 @@
             VerticalOptions="FillAndExpand"
             ItemsSource="{Binding Users}"
             HasUnevenRows="True">
+            <ListView.Header>
+                <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Green">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Datos Del Usuario" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontAttributes="Bold"></Label>
+
+                </Grid>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -37,6 +48,15 @@
                                 su nombre y el apellido, asi como el email haciendo bind a las propiedades
                                 avatar, first_name, last_name e email
                             -->
+                            <Image HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Source="{Binding avatar}"
+                                   WidthRequest="60"
+                                   HeightRequest="70" Grid.Column="0"
+                                    Aspect="AspectFill"/>
+                            <Label Text="{Binding first_name}" VerticalTextAlignment="Center" Width="60" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                            <Label Text="{Binding last_name}" VerticalTextAlignment="Center" Width="60" HorizontalTextAlignment="End" Grid.Column="2"/>
+                            <Label Text="{Binding email}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="3"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

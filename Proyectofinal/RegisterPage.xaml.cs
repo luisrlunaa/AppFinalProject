@@ -19,7 +19,35 @@ namespace Proyectofinal
 
         #region Propiedades
         //TODO: Crear las propiedades Email y Password para hacer Binding con el XAML
+        private string _email;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
 
+            set
+            {
+                _email = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        private string _password;
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+
+            set
+            {
+                _password = value;
+                this.OnPropertyChanged();
+            }
+        }
         public Command Register { get; set; }
 
         #endregion
@@ -43,8 +71,8 @@ namespace Proyectofinal
             //TODO: Reemplazar los valores con las propiedades Email y Password
             var credentials = new
             {
-                email = "",
-                password = ""
+                email = Email,
+                password = Password
             };
 
             string json = JsonConvert.SerializeObject(credentials);

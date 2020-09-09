@@ -30,6 +30,13 @@
             <!-- Crear un Entry para que el usuario pueda introducir la clave
                 y hacer Binding a la propiedad Password
             -->
+            <Entry Placeholder="Correo"
+                    Text="{Binding Email}"
+                   HorizontalOptions="FillAndExpand"/>
+            <Entry Placeholder="Clave"
+                    Text="{Binding Password}"
+                   HorizontalOptions="FillAndExpand"
+                   IsPassword="True"/>
 
             <ActivityIndicator IsRunning="{Binding IsBusy}" />
 

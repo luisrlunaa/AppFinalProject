@@ -97,12 +97,13 @@ namespace Proyectofinal
                         await Navigation.PushModalAsync(new MainTabbedPage());
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await DisplayAlert("Error", "Credenciales Invalidas", "Ok");
                 }
 
-            } else
+            }
+            else
             {
                 await DisplayAlert("Error", "Credenciales Invalidas", "Ok");
             }

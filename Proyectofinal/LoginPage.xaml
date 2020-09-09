@@ -29,13 +29,15 @@
 
             <!-- Agregar el Binding al campo  Email-->
 
-            <Entry Placeholder="Email"
+            <Entry Placeholder="Correo"
+                   Text="{Binding Email}"
                    HorizontalOptions="FillAndExpand"
                    Keyboard="Email"/>
 
             <!-- Agregar el Binding al campo  Password-->
 
-            <Entry Placeholder="Password"
+            <Entry Placeholder="Clave"
+                    Text="{Binding Password}"
                    HorizontalOptions="FillAndExpand"
                    IsPassword="True"/>
 
@@ -49,12 +51,14 @@
                     TextColor="White"
                     BackgroundColor="Blue"
                     CornerRadius="5"
+                    Command="{Binding Login}"
                     IsEnabled="{Binding CanLogin}"/>
 
             <!-- Agregar el Binding al comando Register-->
 
             <Button Text="Registrarse"
                     TextColor="Blue"
+                    Command="{Binding Register}"
                     BackgroundColor="Transparent"/>
         </StackLayout>
     </ContentPage.Content>
