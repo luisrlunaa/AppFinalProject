@@ -30,8 +30,7 @@
         <ListView HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
                   ItemsSource="{Binding Albums}"
-                  SelectedItem="{Binding SelectedAlbum}"
-                  ItemSelected="ListView_ItemSelected" >
+                  SelectedItem="{Binding SelectedAlbum}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}" TextColor="Black"/>

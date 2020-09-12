@@ -29,7 +29,25 @@
             VerticalOptions="FillAndExpand"
             ItemsSource="{Binding Users}"
             HasUnevenRows="True">
+            <ListView.Header>
+                <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Green">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Datos" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="Del" HorizontalTextAlignment="Center" Grid.Column="1" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="Usuario" HorizontalTextAlignment="Center" Grid.Column="2" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="" HorizontalTextAlignment="Center" Grid.Column="3" TextColor="White" FontAttributes="Bold"></Label>
 
+                </Grid>
+            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -45,8 +63,8 @@
                                    WidthRequest="60"
                                    HeightRequest="70" Grid.Column="0"
                                     Aspect="AspectFill"/>
-                            <Label Text="{Binding first_name}" VerticalTextAlignment="Center" Width="60" HorizontalTextAlignment="Center" Grid.Column="1"/>
-                            <Label Text="{Binding last_name}" VerticalTextAlignment="Center" Width="60" HorizontalTextAlignment="End" Grid.Column="2"/>
+                            <Label Text="{Binding first_name}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="1"/>
+                            <Label Text="{Binding last_name}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="2"/>
                             <Label Text="{Binding email}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Grid.Column="3"/>
                         </StackLayout>
                     </ViewCell>

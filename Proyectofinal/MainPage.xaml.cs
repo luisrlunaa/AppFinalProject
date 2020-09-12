@@ -32,6 +32,8 @@ namespace Proyectofinal
             set
             {
                 _selectedAlbum = value;
+                
+                this.SelectAlbum(SelectedAlbum);
                 //TODO: Llamar el metodo SelectAlbum para navegar al detalle
             }
         }
@@ -49,12 +51,13 @@ namespace Proyectofinal
             //TODO: Asignar el BindingContext a la misma instancia de MainPage
         }
 
-        private async Task SelectAlbum(Album selectedAlbum)
+        private async void SelectAlbum(Album selectedAlbum)
         {
             if (selectedAlbum == null)
             {
                 return;
             }
+
             //TODO: Navegar hacia la pagina AlbumDetailPage y pasar el album seleccionado
             await Navigation.PushAsync(new AlbumDetailPage(selectedAlbum.AlbumId));
             selectedAlbum = null;
@@ -63,19 +66,15 @@ namespace Proyectofinal
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
             IsBusy = true;
 
             var response = await httpClient.GetAsync(URL);
-
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-
                 try
                 {
                     var albumsResponse = JsonConvert.DeserializeObject<List<Album>>(jsonResponse);
-
                     if (albumsResponse.Count > 0)
                     {
                         Albums.Clear();
@@ -89,7 +88,6 @@ namespace Proyectofinal
                 {
                     await DisplayAlert("Error", "No se pudo descargar la lista de albums", "Ok");
                 }
-
             }
             else
             {
@@ -97,17 +95,6 @@ namespace Proyectofinal
             }
 
             IsBusy = false;
-        }
-
-        async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var albumSeleccionada = e.SelectedItem as Album;
-            if (albumSeleccionada == null)
-            {
-                return;
-            }
-
-            await SelectAlbum(albumSeleccionada);
         }
     }
 }

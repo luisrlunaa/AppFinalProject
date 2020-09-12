@@ -104,7 +104,6 @@ namespace Proyectofinal
                 var x = await response.Content.ReadAsStringAsync();
                 await DisplayAlert("Error", x, "Ok");
             }
-
             IsBusy = false;
         }
     }

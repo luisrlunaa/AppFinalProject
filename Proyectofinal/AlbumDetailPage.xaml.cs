@@ -39,21 +39,21 @@ namespace Proyectofinal
 
             IsBusy = true;
             var url = string.Format(URL, AlbumId);
-            if(url != null)
+            if (url != null)
             {
-                var respuestas = await httpClient.GetAsync(url);
-                if (respuestas.IsSuccessStatusCode)
+                var response = await httpClient.GetAsync(url);
+                if (response.IsSuccessStatusCode)
                 {
-                    var jsonResponse = await respuestas.Content.ReadAsStringAsync();
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
                     try
                     {
-                        var fotos = JsonConvert.DeserializeObject<ObservableCollection<Photo>>(jsonResponse);
+                        var fotos = JsonConvert.DeserializeObject<List<Photo>>(jsonResponse);
                         if (fotos.Count > 0)
                         {
                             Photos.Clear();
-                            foreach (var foto in fotos)
+                            foreach (var Foto in fotos)
                             {
-                                Photos.Add(foto);
+                                Photos.Add(Foto);
                             }
                         }
                     }
@@ -62,7 +62,12 @@ namespace Proyectofinal
                         await DisplayAlert("Error", "No se pudo descargar la lista de Fotos", "Ok");
                     }
                 }
+                else
+                {
+                    await DisplayAlert("Error", "No se pudo descargar la lista de Fotos", "Ok");
+                }
             }
+
             IsBusy = false;
         }
     }
