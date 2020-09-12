@@ -29,16 +29,7 @@
             VerticalOptions="FillAndExpand"
             ItemsSource="{Binding Users}"
             HasUnevenRows="True">
-            <ListView.Header>
-                <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Green">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Datos Del Usuario" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontAttributes="Bold"></Label>
 
-                </Grid>
-            </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

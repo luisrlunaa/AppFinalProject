@@ -21,9 +21,9 @@
         </OnPlatform>
     </ContentPage.Padding>
     <ContentPage.Content>
-        <StackLayout> <ActivityIndicator IsRunning="{Binding IsBusy}" />
-            <CollectionView
-                ItemsSource="{Binding Photos}">
+        <StackLayout> 
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+            <CollectionView ItemsSource="{Binding Photos}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
                         Orientation="Vertical"

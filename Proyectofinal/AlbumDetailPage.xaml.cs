@@ -36,42 +36,34 @@ namespace Proyectofinal
             //TODO: Implementar el codigo para descargar la lista de fotos de un album
             // Usar la constante URL declarada al inicio de la clase y reemplazar {0}
             // Por la variable albumId
-            base.OnAppearing();
 
             IsBusy = true;
-            HttpContent content = new StringContent(JsonConvert.SerializeObject(AlbumId), Encoding.UTF8, "application/json");
-            var response = await this.httpClient.PostAsync(URL, content);
-
-            if (response.IsSuccessStatusCode)
+            var url = string.Format(URL, AlbumId);
+            if(url != null)
             {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-
-                try
+                var respuestas = await httpClient.GetAsync(url);
+                if (respuestas.IsSuccessStatusCode)
                 {
-                    var fotoResponse = JsonConvert.DeserializeObject<List<Photo>>(jsonResponse);
-
-                    if (fotoResponse.Count > 0)
+                    var jsonResponse = await respuestas.Content.ReadAsStringAsync();
+                    try
                     {
-                        Photos.Clear();
-                        foreach (var fotos in fotoResponse)
+                        var fotos = JsonConvert.DeserializeObject<ObservableCollection<Photo>>(jsonResponse);
+                        if (fotos.Count > 0)
                         {
-                            Photos.Add(fotos);
+                            Photos.Clear();
+                            foreach (var foto in fotos)
+                            {
+                                Photos.Add(foto);
+                            }
                         }
                     }
+                    catch (Exception)
+                    {
+                        await DisplayAlert("Error", "No se pudo descargar la lista de Fotos", "Ok");
+                    }
                 }
-                catch (Exception)
-                {
-                    await DisplayAlert("Error", "No se pudo descargar la lista de fotos", "Ok");
-                }
-
             }
-            else
-            {
-                await DisplayAlert("Error", "No se pudo descargar la lista de fotos", "Ok");
-            }
-
             IsBusy = false;
-
         }
     }
 }
