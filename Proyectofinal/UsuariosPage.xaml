@@ -41,10 +41,10 @@
                         <ColumnDefinition
                             Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="Datos" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontAttributes="Bold"></Label>
-                    <Label Text="Del" HorizontalTextAlignment="Center" Grid.Column="1" TextColor="White" FontAttributes="Bold"></Label>
-                    <Label Text="Usuario" HorizontalTextAlignment="Center" Grid.Column="2" TextColor="White" FontAttributes="Bold"></Label>
-                    <Label Text="" HorizontalTextAlignment="Center" Grid.Column="3" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="Informacion" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="De " HorizontalTextAlignment="Center" Grid.Column="1" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="los " HorizontalTextAlignment="Center" Grid.Column="2" TextColor="White" FontAttributes="Bold"></Label>
+                    <Label Text="Usuarios" HorizontalTextAlignment="Center" Grid.Column="3" TextColor="White" FontAttributes="Bold"></Label>
 
                 </Grid>
             </ListView.Header>
